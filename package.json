@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/googlr/D3Challenge/issues"
   },
-  "homepage": "https://github.com/googlr/D3Challenge#readme"
+  "homepage": "https://github.com/googlr/D3Challenge#readme",
+  "dependencies": {
+    "d3": "^4.11.0",
+    "jquery": "^3.2.1"
+  }
 }
