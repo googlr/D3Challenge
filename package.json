@@ -1,0 +1,22 @@
+{
+  "name": "car",
+  "version": "1.0.0",
+  "description": "lab6",
+  "main": "1",
+  "scripts": {
+    "test": "1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/googlr/D3Challenge.git"
+  },
+  "keywords": [
+    "car"
+  ],
+  "author": "ccw, xjg, crl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/googlr/D3Challenge/issues"
+  },
+  "homepage": "https://github.com/googlr/D3Challenge#readme"
+}
