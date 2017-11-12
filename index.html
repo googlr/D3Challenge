@@ -40,28 +40,12 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  // The jQuery-CSV library has a function called $.csv.toObjects(csv) that does the mapping automatically.
-  // Refer to https://stackoverflow.com/a/12289296
-  /*Using the following dataset:
-      heading1,heading2,heading3,heading4,heading5
-      value1_1,value2_1,value3_1,value4_1,value5_1
-      value1_2,value2_2,value3_2,value4_2,value5_2
-    
-    Use the code:
-      var data = $.csv.toObjects(csv):
-    
-    The output saved in 'data' will be:
-      [
-        { heading1:"value1_1",heading2:"value2_1",heading3:"value3_1",heading4:"value4_1",heading5:"value5_1" } 
-        { heading1:"value1_2",heading2:"value2_2",heading3:"value3_2",heading4:"value4_2",heading5:"value5_2" }
-      ]
-  */
-  filename = "./car.csv";
-  var data = $.csv.toObjects(filename);
 
 
-</script>
+<script type="text/javascript" src="d3ReadData.js"></script>
+
+<script type="text/javascript" src="dropdownChange.js"></script>
+
 
 </body>
 </html>
