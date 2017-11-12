@@ -39,7 +39,7 @@ var draw = function(xdata, ydata, low, high) {
 			.range([0, width])
 			.domain([d3.min(data, function(d) {
 				return d[xdata];
-			}), d3.max(data, function(d) {
+			}) / 1.5, d3.max(data, function(d) {
 				return d[xdata];
 			})]);
 
@@ -47,7 +47,7 @@ var draw = function(xdata, ydata, low, high) {
 			.range([height, 0])
 			.domain([d3.min(data, function(d) {
 				return d[ydata];
-			}), d3.max(data, function(d) {
+			}) / 1.5, d3.max(data, function(d) {
 				return d[ydata];
 			})]);
 
@@ -57,10 +57,28 @@ var draw = function(xdata, ydata, low, high) {
 			.attr("transform", "translate(0," + (height) + ")")
 			.call(d3.axisBottom(scaleX).ticks(5));
 
+		// X Axis text
+		// text label for the x axis
+		svg.append("text")
+			.attr("transform",
+				"translate(" + (width) + " ," +
+				(height + margin.top) + ")")
+			.style("text-anchor", "middle")
+			.text(xdata);
+
 		// Add the Y Axis
 		svg.append("g")
 			.attr("class", "axis")
 			.call(d3.axisLeft(scaleY));
+
+		// text label for the y axis
+		svg.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 0 - margin.left)
+			.attr("x", 0 )
+			.attr("dy", "1em")
+			.style("text-anchor", "middle")
+			.text(ydata);
 
 		// add points
 		svg.selectAll("circle")
@@ -74,6 +92,8 @@ var draw = function(xdata, ydata, low, high) {
 				return scaleY(d[ydata]);
 			})
 			.attr("r", 2);
+
+		// add text
 
 	});
 
