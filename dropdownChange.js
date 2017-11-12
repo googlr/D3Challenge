@@ -46,10 +46,10 @@ console.log(xData);
 });
 
 // Create Event Handlers for mouse
-      function handleMouseOver(d, i) {  // Add interactivity
+      function handleMouseOver(d) {  // Add interactivity
 
             // Use D3 to select element, change color and size
-            console.log( d3.select(this) );
+            $("#hovered").html( d["name"] );
           }
 
       function handleMouseOut(d, i) {
@@ -92,7 +92,7 @@ var draw = function(xdata, ydata, low, high) {
 			return d["mpg"] >= low && d["mpg"] <= high;
 		});
 		// making scale	
-		console.log(data.length);
+		//console.log(data.length);
 		var scaleX = d3.scaleLinear()
 			.range([0, width])
 			.domain([d3.min(data, function(d) {
@@ -148,6 +148,9 @@ var draw = function(xdata, ydata, low, high) {
 			})
 			.attr("cy", function(d) {
 				return scaleY(d[ydata]);
+			})
+			.attr("name", function(d) {
+				return d["name"];
 			})
 			.attr("r", 2)
 			.on("mouseover", handleMouseOver)
