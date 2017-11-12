@@ -91,6 +91,9 @@ var draw = function(xdata, ydata, low, high) {
 			.attr("cy", function(d) {
 				return scaleY(d[ydata]);
 			})
+			.attr("name", function(d) {
+				return d["name"];
+			})
 			.attr("r", 2);
 
 		// add text
