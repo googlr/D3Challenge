@@ -1,5 +1,5 @@
-var draw = function() {
-
+var draw = function(xdata, ydata, low, high) {
+	d3.selectAll("svg > *").remove();
 	var margin = {
 			top: 50,
 			right: 50,
@@ -23,31 +23,32 @@ var draw = function() {
 
 		// format the data
 		data.forEach(function(d) {
-			d.mpg = + d.mpg;
-			d.displacement = +d.displacement;
+			if(xdata != "mpg" || ydata != "mpg") {
+				d["mpg"] = +d["mpg"];
+			}
+			d[xdata] = +d[xdata];
+			d[ydata] = +d[ydata];
 		});
-
-		console.log(d3.min(data, function(d) {
-			return d.mpg;
-		}));
-		console.log(d3.max(data, function(d) {
-			return d.mpg;
-		}));
-		// making scale		
+		// filter
+		data = data.filter(function(d) {
+			return d["mpg"] >= low && d["mpg"] <= high;
+		});
+		// making scale	
+		console.log(data.length);
 		var scaleX = d3.scaleLinear()
 			.range([0, width])
 			.domain([d3.min(data, function(d) {
-				return d.displacement;
+				return d[xdata];
 			}), d3.max(data, function(d) {
-				return d.displacement;
+				return d[xdata];
 			})]);
 
 		var scaleY = d3.scaleLinear()
 			.range([height, 0])
 			.domain([d3.min(data, function(d) {
-				return d.mpg;
+				return d[ydata];
 			}), d3.max(data, function(d) {
-				return d.mpg;
+				return d[ydata];
 			})]);
 
 		// Add the X Axis
@@ -67,10 +68,10 @@ var draw = function() {
 			.enter()
 			.append("circle")
 			.attr("cx", function(d) {
-				return scaleX(d.displacement);
+				return scaleX(d[xdata]);
 			})
 			.attr("cy", function(d) {
-				return scaleY(d.mpg);
+				return scaleY(d[ydata]);
 			})
 			.attr("r", 2);
 
@@ -79,6 +80,9 @@ var draw = function() {
 };
 
 $(document).ready(function() {
+	draw("displacement", "mpg", 0, 30);
+	$('#update').click(function() {
+		draw("displacement", "weight", 0, 30);
+	});
 
-	draw();
 });
